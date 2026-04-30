@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 /* ─── DATA ─────────────────────────────────────────────────────────────────── */
@@ -66,6 +67,7 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState("hero");
   const [activeTicketFilter, setActiveTicketFilter] = useState("all");
   const [activeFaction, setActiveFaction] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const scrollTo = (id: string) => {
     setActiveSection(id);
@@ -103,11 +105,13 @@ export default function Index() {
             КРИМИНАЛЬНЫЙ МИР
           </span>
         </div>
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5">
           {[["hero","Главная"],["factions","Фракции"],["tickets","Тикеты"],["gallery","Галерея"],["rating","Рейтинг"],["news","Новости"]].map(([id, label]) => (
             <button key={id} onClick={() => scrollTo(id)}
               className={`nav-link ${activeSection === id ? "active" : ""}`}>{label}</button>
           ))}
+          <button onClick={() => navigate("/forum")} className="nav-link">Форум</button>
+          <button onClick={() => navigate("/laws")} className="nav-link">Законы</button>
         </div>
         <button className="btn-grad text-sm">Войти</button>
       </nav>
