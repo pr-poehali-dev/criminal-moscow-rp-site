@@ -155,7 +155,7 @@ export default function Index() {
           {[["hero","Главная"],["factions-section","Фракции"],["laws-section","Законы"],["devs-section","Разработчики"]].map(([id, label]) => (
             <button key={id} onClick={() => scrollTo(id)} className="nav-link">{label}</button>
           ))}
-          <button onClick={() => navigate("/forum")} className="nav-link">Форум</button>
+          <button onClick={() => navigate("/forum")} className="nav-link">Все фракции</button>
         </div>
         <button className="btn-grad text-sm">Войти</button>
       </nav>
